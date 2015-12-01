@@ -4,6 +4,7 @@ Do not throw sprites with HTTP/2
 This repository contains the material used to generate OCTO blog article about sprites and HTTP/2.
 
 EN : http://blog.octo.com/en/?p=58039
+
 FR : http://blog.octo.com/?p=57599
 
 Nginx
@@ -92,11 +93,11 @@ exit
 
 ### Install HTML/IMG files
 
-We then have to install the HTML/IMG files to be served by nginx. The last version is available at xxx. By default, it has to be placed in the `/usr/share/nginx/html` directory.
+We then have to install the HTML/IMG files to be served by nginx. The last version is available in the [repository](https://github.com/benoit74/http2-sprites/raw/master/web/sprites.zip). By default, it has to be placed in the `/usr/share/nginx/html` directory.
 
 ```bash
 cd /usr/share/nginx/html
-wget http://www.oviles.info/sprites.zip
+wget https://github.com/benoit74/http2-sprites/raw/master/web/sprites.zip
 sudo apt-get install unzip
 unzip sprites.zip
 rm -r __MACOSX/
