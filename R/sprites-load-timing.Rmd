@@ -1,24 +1,27 @@
 ---
 title: "sprites-load-timing"
-author: "MAA"
+author: "Benoît Beraud & Alexandre Masselot"
 date: "4 December 2015"
 output: pdf_document
 ---
 
 With Benoit blog post. Displayload timings
 
-```{r fig.width=7}
+```{r,fig.width=8.5,fig.height=5}
 library(ggplot2)
 df = read.csv('data/sprites-summary.csv')
-df$setup = factor(df$setup, levels = c("individual-10%", "individual-30%",  "individual-50%",  "individual-80%", "individual-100%", "sprite set"))
+df$setup = factor(df$setup, levels = c("individual-10%", "individual-30%",
+                                       "individual-50%",  "individual-80%",
+                                       "individual-100%", "sprite set"))
 df.no.sprites = df[df$setup != 'sprite set',]
 
 qq = ggplot(df, aes(x=setup, y=load.time)) +
      geom_point(aes(colour=protocol, shape=browser),
-                size=1,
+                size=2,
                 alpha=0.9,
                 position = position_jitter(w=0.05, h=0)
                 ) +
+     scale_colour_manual(values = c('blue', 'red')) +
      facet_wrap(~network, ncol = 1, scales = 'free_y') +
       theme_bw() +
       theme(axis.text.x=element_text(angle = 30, hjust = 1),
