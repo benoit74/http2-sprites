@@ -4,3 +4,7 @@ summary.csv
 .Rproj.user
 .Rhistory
 .RData
+
+tmp/
+*.iml
+.idea

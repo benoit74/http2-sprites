@@ -38,9 +38,9 @@ qq = ggplot(df, aes(x=setup, y=load.time)) +
                   se=FALSE,
                   alpha=0.7
                   ) +
-      labs(title='Images loading time versus organization, browser and protocol',
+      labs(title='Images loading time versus arrangement, browser and protocol',
          y='loading time',
-         x='images organization'
+         x='image arrangement'
          ) 
 
 
