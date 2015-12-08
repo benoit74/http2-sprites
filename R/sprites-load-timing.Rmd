@@ -14,8 +14,10 @@ df$setup = factor(df$setup, levels = c("individual-10%", "individual-30%",
                                        "individual-50%",  "individual-80%",
                                        "individual-100%", "sprite set"))
 df.no.sprites = df[df$setup != 'sprite set',]
+df.conf3 = df[df$configuration == 3,]
+df.conf3.no.sprites = df[df$setup != 'sprite set' & df$configuration == 3,]
 
-qq = ggplot(df, aes(x=setup, y=load.time)) +
+graph1 = ggplot(df, aes(x=setup, y=load.time)) +
      geom_point(aes(colour=protocol, shape=browser),
                 size=2,
                 alpha=0.9,
@@ -39,12 +41,76 @@ qq = ggplot(df, aes(x=setup, y=load.time)) +
                   alpha=0.7
                   ) +
       labs(title='Images loading time versus arrangement, browser and protocol',
-         y='loading time',
+         y='loading time (s)',
          x='image arrangement'
          ) 
 
 
-print(qq)
+print(graph1)
+
+
+graph2 = ggplot(df.conf3, aes(x=X..of.images, y=load.time)) +
+     geom_point(aes(colour=protocol, shape=browser),
+                size=2,
+                alpha=0.9,
+                position = position_jitter(w=0.05, h=0)
+                ) +
+     scale_colour_manual(values = c('blue', 'red')) +
+      theme_bw() +
+      theme(axis.text.x=element_text(angle = 30, hjust = 1),
+            plot.title = element_text(vjust=2)) +
+      geom_smooth(data=df.conf3.no.sprites,
+                  aes(x=X..of.images,
+                      y=load.time,
+                      group=interaction(browser, protocol),
+                      colour=protocol,
+                      linetype=browser
+                      ),
+                  method='lm',
+                  formula= y~x,
+                  se=FALSE,
+                  alpha=0.7
+                  ) +
+      labs(title='Images loading time versus number of images, browser and protocol',
+         y='loading time (s)',
+         x='number of images'
+         ) 
+
+
+print(graph2)
+
+
+
+graph3 = ggplot(df.conf3, aes(x=Total.size, y=load.time)) +
+     geom_point(aes(colour=protocol, shape=browser),
+                size=2,
+                alpha=0.9,
+                position = position_jitter(w=0.05, h=0)
+                ) +
+     scale_colour_manual(values = c('blue', 'red')) +
+      theme_bw() +
+      theme(axis.text.x=element_text(angle = 30, hjust = 1),
+            plot.title = element_text(vjust=2)) +
+      geom_smooth(data=df.conf3.no.sprites,
+                  aes(x=Total.size,
+                      y=load.time,
+                      group=interaction(browser, protocol),
+                      colour=protocol,
+                      linetype=browser
+                      ),
+                  method='lm',
+                  formula= y~x,
+                  se=FALSE,
+                  alpha=0.7
+                  ) +
+      labs(title='Images loading time versus images total size, browser and protocol',
+         y='loading time (s)',
+         x='images total size (kB)'
+         ) 
+
+
+print(graph3)
+
 ```
 
 
