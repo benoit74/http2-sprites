@@ -1,2 +1,10 @@
 results
 summary.csv
+.Rproj.user
+.Rproj.user
+.Rhistory
+.RData
+
+tmp/
+*.iml
+.idea
