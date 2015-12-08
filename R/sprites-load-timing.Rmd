@@ -111,6 +111,25 @@ graph3 = ggplot(df.conf3, aes(x=Total.size, y=load.time)) +
 
 print(graph3)
 
+
+dis = read.csv('data/sprites-distribution.csv')
+
+
+graph4 = ggplot(dis, aes(x=Data, y=Prctile)) +
+     geom_point(size=2,
+                alpha=0.9
+                ) +
+      theme_bw() +
+      theme(axis.text.x=element_text(angle = 30, hjust = 1),
+            plot.title = element_text(vjust=2)) +
+      labs(title='Distribution of image loading time',
+         x='loading time (s)',
+         y='percentile'
+         ) 
+
+
+print(graph4)
+
 ```
 
 
