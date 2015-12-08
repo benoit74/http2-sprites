@@ -18,7 +18,7 @@ import time
 #print "Creating proxy"
 #proxy = server.create_proxy()
 
-pages = ['Single', 'AllSplitted', '80pSplitted', '50pSplitted', '30pSplitted', '10pSplitted']
+pages = ['SpriteSet', 'Individual-100Percent', 'Individual-80Percent', 'Individual-50Percent', 'Individual-30Percent', 'Individual-10Percent']
 modes = ['http1', 'http2']
 browsers = ['Firefox', 'Chrome']
 
@@ -54,7 +54,7 @@ for iteration in range(100):
 #					print "Starting new HAR"
 #					proxy.new_har()
 					
-					url = "https://{0}.sprites.octo.com/sprites/Facebook1-{1}Iframe.html".format(mode, page)
+					url = "https://{0}.sprites.octo.com/sprites/{1}.html".format(mode, page)
 					print "Loading {0}".format(url)
 					try:
 						driver.get(url)
