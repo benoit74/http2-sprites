@@ -48,7 +48,9 @@ graph1 = ggplot(df, aes(x=setup, y=load.time)) +
 
 print(graph1)
 
+```
 
+```{r, fig.width = 9, fig.height = 4}
 graph2 = ggplot(df.conf3, aes(x=X..of.images, y=load.time)) +
      geom_point(aes(colour=protocol, shape=browser),
                 size=2,
@@ -79,8 +81,9 @@ graph2 = ggplot(df.conf3, aes(x=X..of.images, y=load.time)) +
 
 print(graph2)
 
+```
 
-
+```{r, fig.width = 9, fig.height = 4}
 graph3 = ggplot(df.conf3, aes(x=Total.size, y=load.time)) +
      geom_point(aes(colour=protocol, shape=browser),
                 size=2,
@@ -115,9 +118,13 @@ print(graph3)
 dis = read.csv('data/sprites-distribution.csv')
 
 
+```
+
+```{r, fig.width = 9, fig.height = 4}
 graph4 = ggplot(dis, aes(x=Data, y=Prctile)) +
      geom_point(size=2,
-                alpha=0.9
+                alpha=0.9,
+                color = 'blue'
                 ) +
       theme_bw() +
       theme(axis.text.x=element_text(angle = 30, hjust = 1),
